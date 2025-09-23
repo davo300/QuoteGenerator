@@ -1,0 +1,33 @@
+.quote-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    font-family: "Arial", sans-serif;
+  }
+  
+  .quote-text {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .quote-button {
+    background: linear-gradient(135deg, #ff6ec4, #7873f5);
+    color: white;
+    font-size: 1.2rem;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .quote-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.3);
+  }
+  
