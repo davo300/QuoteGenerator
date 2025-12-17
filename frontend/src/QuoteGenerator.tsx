@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react"; // react
 import "./QuoteGenerator.css";
+import { Link } from "react-router-dom";
+
+
+<div className="quote-nav">
+  <Link to="/">View Quotes</Link>
+  <Link to="/add">Add Quote</Link>
+</div>
 
 interface Quote {
   id: number;
@@ -37,14 +44,26 @@ const QuoteGenerator: React.FC = () => {
 
   return (
     <div className="quote-container">
+      <h1 className="quote-title">Quote App</h1>
+  
+      <div className="quote-nav">
+        <Link to="/">View Quotes</Link>
+        <Link to="/add">Add Quote</Link>
+      </div>
+  
       <p className="quote-text">
         “{quotes[index].text}” — {quotes[index].author || "Unknown"}
       </p>
+  
       <button className="quote-button" onClick={handleNextQuote}>
         Next Quote ➡️
       </button>
     </div>
   );
+  
+
+  
+  
 };
 
 export default QuoteGenerator;

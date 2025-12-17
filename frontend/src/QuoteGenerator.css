@@ -1,33 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply font-sans;
+}
+
+
 .quote-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    text-align: center;
-    font-family: "Arial", sans-serif;
-  }
-  
-  .quote-text {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    transition: opacity 0.3s ease-in-out;
-  }
-  
-  .quote-button {
-    background: linear-gradient(135deg, #ff6ec4, #7873f5);
-    color: white;
-    font-size: 1.2rem;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  
-  .quote-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.3);
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  text-align: center;
+}
+
+
+
+/* Navigation styling */
+.quote-nav {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.quote-nav a {
+  text-decoration: none;
+  font-weight: 500;
+  color: #6b4eff;
+}
+
+.quote-nav a:hover {
+  text-decoration: underline;
+}
+
+/* App title */
+.quote-title {
+  margin-bottom: 0.4rem;
+  font-size: 2.4rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Quote text */
+.quote-text {
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  max-width: 700px;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Button */
+.quote-button {
+  background: linear-gradient(135deg, #ff6ec4, #7873f5);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 12px 26px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.quote-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.3);
+}

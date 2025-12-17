@@ -1,18 +1,21 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
-interface AddQuoteFormProps {
-  onQuoteAdded: () => void;
-}
-
-const AddQuoteForm: React.FC<AddQuoteFormProps> = ({ onQuoteAdded }) => {
+const AddQuoteForm = () => {
   const [text, setText] = useState("");
   const [author, setAuthor] = useState("");
+  const [status, setStatus] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (!text.trim()) {
+      setStatus("Quote text is required");
+      return;
+    }
+
     try {
-      const response = await fetch("http://127.0.0.1:8000/quotes", {
+      const res = await fetch("http://localhost:8000/quotes", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -23,52 +26,56 @@ const AddQuoteForm: React.FC<AddQuoteFormProps> = ({ onQuoteAdded }) => {
         }),
       });
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+      if (!res.ok) {
+        throw new Error("Failed to add quote");
       }
 
-      const addedQuote = await response.json();
-      console.log("Quote added:", addedQuote);
-
-      // Reset input fields
       setText("");
       setAuthor("");
-
-      // Notify parent to refresh quotes
-      onQuoteAdded();
-    } catch (error) {
-      console.error("Error adding quote:", error);
+      setStatus("Quote added successfully ✅");
+    } catch (err) {
+      setStatus("Error adding quote ❌");
     }
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="flex flex-col items-center space-y-4 mt-4 bg-white p-6 rounded-2xl shadow-md w-full max-w-md"
-    >
-      <input
-        type="text"
-        placeholder="Quote text"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        required
-        className="w-full p-2 border rounded-lg"
-      />
-      <input
-        type="text"
-        placeholder="Author (optional)"
-        value={author}
-        onChange={(e) => setAuthor(e.target.value)}
-        className="w-full p-2 border rounded-lg"
-      />
-      <button
-        type="submit"
-        className="px-6 py-2 bg-green-500 text-white font-semibold rounded-lg shadow hover:bg-green-600 transition"
-      >
-        Add Quote
-      </button>
-    </form>
+    <div className="quote-container">
+      {/* App title */}
+      <h1 className="quote-title">Quote App</h1>
+  
+      {/* Navigation */}
+      <div className="quote-nav">
+        <Link to="/">View Quotes</Link>
+        <Link to="/add">Add Quote</Link>
+      </div>
+  
+      {/* Form */}
+      <form onSubmit={handleSubmit} style={{ marginTop: "2rem", width: "100%", maxWidth: "500px" }}>
+        <h2>Add a Quote</h2>
+  
+        <textarea
+          placeholder="Quote text"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          rows={3}
+          style={{ width: "100%", marginBottom: "0.5rem" }}
+        />
+  
+        <input
+          type="text"
+          placeholder="Author (optional)"
+          value={author}
+          onChange={(e) => setAuthor(e.target.value)}
+          style={{ width: "100%", marginBottom: "0.5rem" }}
+        />
+  
+        <button type="submit">Add Quote</button>
+  
+        {status && <p>{status}</p>}
+      </form>
+    </div>
   );
+  
 };
 
 export default AddQuoteForm;
