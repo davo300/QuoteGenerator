@@ -42,16 +42,6 @@ Users can browse inspirational quotes, add new quotes with authors, and store th
 
 ---
 
-## 📸 Screenshots
-
-### View Quotes
-![View Quotes](./screenshots/view-quotes.png)
-
-### Add Quote
-![Add Quote](./screenshots/add-quote.png)
-
----
-
 ## 🚀 Getting Started
 
 ### Backend
@@ -61,7 +51,7 @@ pip install -r requirements.txt
 uvicorn main:app --reload
 
 
-### Backend
+### Frontend
 ```bash
 cd frontend
 npm install
