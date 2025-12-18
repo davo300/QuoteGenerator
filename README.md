@@ -49,7 +49,7 @@ Users can browse inspirational quotes, add new quotes with authors, and store th
 cd backend
 pip install -r requirements.txt
 uvicorn main:app --reload
-
+```
 
 ### Frontend
 ```bash
